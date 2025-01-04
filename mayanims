@@ -829,7 +829,7 @@ scrollFrame:WaitForChild("modelwalkButton").MouseButton1Click:Connect(playmodelw
 scrollFrame:WaitForChild("kungfoButton").MouseButton1Click:Connect(playkungfo)
 scrollFrame:WaitForChild("gunshootButton").MouseButton1Click:Connect(playgunshoot)
 scrollFrame:WaitForChild("reloadgunButton").MouseButton1Click:Connect(playreloadgun)
-scrollFrame:WaitForChild("face1Button").MouseButton1Click:Connect(playwheelie2)
+scrollFrame:WaitForChild("face1Button").MouseButton1Click:Connect(playface1)
 scrollFrame:WaitForChild("StopAnimButton").MouseButton1Click:Connect(stopAnimations)
 
 -- Create the Open/Close button
