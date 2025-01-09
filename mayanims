@@ -48,7 +48,8 @@ local buttons = {
     {name = "gunshoot", position = 1090},
     {name = "reloadgun", position = 1135},
     {name = "oneleg", position = 1180},
-    {name = "StopAnim", position = 1225},
+    {name = "backflip", position = 1225},
+    {name = "StopAnim", position = 1270},
 }
 
 -- Create buttons dynamically
@@ -785,6 +786,23 @@ local function playface1()
     hit.TimePosition = 2.7  -- Set the animation start position
 end
 
+-- Function to trigger the "backflip" animation
+local function playbackflip()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://15693621070"  -- backflip animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 2)  -- Play the animation with a slight delay
+    hit.TimePosition = 0.4  -- Set the animation start position
+end
+
 -- Function to stop any playing animations
 local function stopAnimations()
     local character = player.Character or player.CharacterAdded:Wait()
@@ -831,6 +849,7 @@ scrollFrame:WaitForChild("kungfoButton").MouseButton1Click:Connect(playkungfo)
 scrollFrame:WaitForChild("gunshootButton").MouseButton1Click:Connect(playgunshoot)
 scrollFrame:WaitForChild("reloadgunButton").MouseButton1Click:Connect(playreloadgun)
 scrollFrame:WaitForChild("face1Button").MouseButton1Click:Connect(playface1)
+scrollFrame:WaitForChild("backflipButton").MouseButton1Click:Connect(playbackflip)
 scrollFrame:WaitForChild("StopAnimButton").MouseButton1Click:Connect(stopAnimations)
 
 -- Create the Open/Close button
