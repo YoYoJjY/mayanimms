@@ -11,7 +11,7 @@ screenGui.Parent = playerGui
 -- Create a ScrollingFrame to hold the buttons and make it scrollable
 local scrollFrame = Instance.new("ScrollingFrame")
 scrollFrame.Name = "ScrollFrame"
-scrollFrame.Size = UDim2.new(0, 200, 0, 300)  -- Adjust the size to fit the screen
+scrollFrame.Size = UDim2.new(0, 200, 0, 250)  -- Adjust the size to fit the screen
 scrollFrame.Position = UDim2.new(1, -210, 0, 10)  -- Position it on the right side
 scrollFrame.CanvasSize = UDim2.new(0, 0, 0, 2000)  -- Adjust canvas size for scrolling
 scrollFrame.ScrollBarThickness = 10  -- Make the scrollbar visible
