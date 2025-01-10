@@ -49,7 +49,15 @@ local buttons = {
     {name = "reloadgun", position = 1135},
     {name = "oneleg", position = 1180},
     {name = "backflip", position = 1225},
-    {name = "StopAnim", position = 1270},
+    {name = "split", position = 1270},
+    {name = "breakdance", position = 1315},
+    {name = "frontflip", position = 1360},
+    {name = "SmoothMoves", position = 1405},
+    {name = "freeflow", position = 1450},
+    {name = "bend2", position = 1495},
+    {name = "barrelroll", position = 1540},
+    {name = "ttnt", position = 1585},
+    {name = "StopAnim", position = 1630},
 }
 
 -- Create buttons dynamically
@@ -803,6 +811,153 @@ local function playbackflip()
     hit.TimePosition = 0.4  -- Set the animation start position
 end
 
+-- Function to trigger the "split" animation
+local function playsplit()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://10714390497"  -- split animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 2)  -- Play the animation with a slight delay
+    hit.TimePosition = 0.4  -- Set the animation start position
+end
+
+-- Function to trigger the "breakdance" animation
+local function playbreakdance()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://85890009404822"  -- breakdance animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 2)  -- Play the animation with a slight delay
+    hit.TimePosition = 1  -- Set the animation start position
+end
+
+-- Function to trigger the "frontflip" animation
+local function playfrontflip()
+    local speaker = player
+    local character = speaker.Character
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+    if not humanoid then
+        warn("Humanoid not found!")
+        return
+    end
+
+    -- Stop existing animations and disable the Animate script
+    for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    character.Animate.Disabled = true
+
+    -- Trigger jump
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+
+    -- Set up and play the animation
+    local hitAnim = Instance.new("Animation")
+    hitAnim.AnimationId = "rbxassetid://15693621070"  -- frontflip animation ID
+    local hit = humanoid:LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, -1)  -- Play the animation with a slight delay
+    hit.TimePosition = 1.60  -- Set the animation start position
+end
+
+-- Function to trigger the "SmoothMoves" animation
+local function playSmoothMoves()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://121025429593434"  -- SmoothMoves animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 2)  -- Play the animation with a slight delay
+    hit.TimePosition = 0  -- Set the animation start position
+end
+
+-- Function to trigger the "freeflow" animation
+local function playfreeflow()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://77953251488968"  -- freeflow animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 2)  -- Play the animation with a slight delay
+    hit.TimePosition = 0  -- Set the animation start position
+end
+
+-- Function to trigger the "bend2" animation
+local function playbend2()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://16553164850"  -- bend2 animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 2)  -- Play the animation with a slight delay
+    hit.TimePosition = 8.19  -- Set the animation start position
+end
+
+-- Function to trigger the "barrelroll" animation
+local function playbarrelroll()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://18537367238"  -- barrelroll animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 0.3)  -- Play the animation with a slight delay
+    hit.TimePosition = 6.1  -- Set the animation start position
+end
+
+-- Function to trigger the "ttnt" animation
+local function playttnt()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://18665811005"  -- ttnt animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 2)  -- Play the animation with a slight delay
+    hit.TimePosition = 6.1  -- Set the animation start position
+end
+
 -- Function to stop any playing animations
 local function stopAnimations()
     local character = player.Character or player.CharacterAdded:Wait()
@@ -850,6 +1005,14 @@ scrollFrame:WaitForChild("gunshootButton").MouseButton1Click:Connect(playgunshoo
 scrollFrame:WaitForChild("reloadgunButton").MouseButton1Click:Connect(playreloadgun)
 scrollFrame:WaitForChild("face1Button").MouseButton1Click:Connect(playface1)
 scrollFrame:WaitForChild("backflipButton").MouseButton1Click:Connect(playbackflip)
+scrollFrame:WaitForChild("splitButton").MouseButton1Click:Connect(playsplit)
+scrollFrame:WaitForChild("breakdanceButton").MouseButton1Click:Connect(playbreakdance)
+scrollFrame:WaitForChild("frontflipButton").MouseButton1Click:Connect(playfrontflip)
+scrollFrame:WaitForChild("SmoothMovesButton").MouseButton1Click:Connect(playSmoothMoves)
+scrollFrame:WaitForChild("freeflowButton").MouseButton1Click:Connect(playfreeflow)
+scrollFrame:WaitForChild("bend2Button").MouseButton1Click:Connect(playbend2)
+scrollFrame:WaitForChild("barrelrollButton").MouseButton1Click:Connect(playbarrelroll)
+scrollFrame:WaitForChild("ttntButton").MouseButton1Click:Connect(playttnt)
 scrollFrame:WaitForChild("StopAnimButton").MouseButton1Click:Connect(stopAnimations)
 
 -- Create the Open/Close button
