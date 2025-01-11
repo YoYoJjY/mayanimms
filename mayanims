@@ -11,8 +11,8 @@ screenGui.Parent = playerGui
 -- Create a ScrollingFrame to hold the buttons and make it scrollable
 local scrollFrame = Instance.new("ScrollingFrame")
 scrollFrame.Name = "ScrollFrame"
-scrollFrame.Size = UDim2.new(0, 200, 0, 250)  -- Adjust the size to fit the screen
-scrollFrame.Position = UDim2.new(1, -700, 0, 10)  -- Position it on the right side
+scrollFrame.Size = UDim2.new(0, 150, 0, 250)  -- Adjust the size to fit the screen
+scrollFrame.Position = UDim2.new(1, -600, 0, 10)  -- Position it on the right side
 scrollFrame.CanvasSize = UDim2.new(0, 0, 0, 2000)  -- Adjust canvas size for scrolling
 scrollFrame.ScrollBarThickness = 10  -- Make the scrollbar visible
 scrollFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)  -- Background color for scroll frame
@@ -57,7 +57,8 @@ local buttons = {
     {name = "bend2", position = 1495},
     {name = "barrelroll", position = 1540},
     {name = "ttnt", position = 1585},
-    {name = "StopAnim", position = 1630},
+    {name = "flips", position = 1630},
+    {name = "StopAnim", position = 1675},
 }
 
 -- Create buttons dynamically
@@ -958,6 +959,23 @@ local function playttnt()
     hit.TimePosition = 6.1  -- Set the animation start position
 end
 
+-- Function to trigger the "flips" animation
+local function playflips()
+    local speaker = player
+    local hitAnim = Instance.new("Animation")
+
+    -- Stop existing animations and disable the Animate script
+    for i, track in pairs(speaker.Character.Humanoid:GetPlayingAnimationTracks()) do
+        track:Stop()
+    end
+    speaker.Character.Animate.Disabled = true
+
+    hitAnim.AnimationId = "rbxassetid://18665825805"  -- flips animation ID
+    local hit = speaker.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(hitAnim)
+    hit:Play(0.1, 1, 1)  -- Play the animation with a slight delay
+    hit.TimePosition = 6  -- Set the animation start position
+end
+
 -- Function to stop any playing animations
 local function stopAnimations()
     local character = player.Character or player.CharacterAdded:Wait()
@@ -1013,6 +1031,7 @@ scrollFrame:WaitForChild("freeflowButton").MouseButton1Click:Connect(playfreeflo
 scrollFrame:WaitForChild("bend2Button").MouseButton1Click:Connect(playbend2)
 scrollFrame:WaitForChild("barrelrollButton").MouseButton1Click:Connect(playbarrelroll)
 scrollFrame:WaitForChild("ttntButton").MouseButton1Click:Connect(playttnt)
+scrollFrame:WaitForChild("flipsButton").MouseButton1Click:Connect(playflips)
 scrollFrame:WaitForChild("StopAnimButton").MouseButton1Click:Connect(stopAnimations)
 
 -- Create the Open/Close button
